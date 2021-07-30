@@ -24,6 +24,11 @@ gem 'tinymce-rails'
 gem 'devise'
 gem 'social-share-button'
 gem 'will_paginate', '~> 3.1.0'
+# ImageMagick
+gem 'rmagick'
+gem "image_processing", ">= 1.2"
+# S3 Storage
+gem "aws-sdk-s3", require: false
 # Improves cache performance
 # gem 'bootsnap', require: false
 # Use Redis adapter to run Action Cable in production

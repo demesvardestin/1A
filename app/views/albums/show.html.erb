@@ -1,0 +1,43 @@
+<style type="text/css">
+    .album-image-container {
+        background-image: url("<%= @a%>"");
+    }
+</style>
+
+<section id="album-page">
+    <div class="row">
+        <div class="col-md-12">
+            <h5>
+                <strong><%= @album.name %></strong>
+            </h5>
+            
+            <p>
+                <%= @album.description %>
+            </p>
+        </div>
+        
+        <div class="col-md-12" style="margin-bottom: 20px;">
+            <p>
+                <%= link_to :back, class:"" do %>
+                    <i class="fas fa-angle-left"></i> back
+                <% end %>
+                
+                <% if current_admin && @album == current_admin.album %>
+                    | <%= link_to edit_album_path(@album), class:"" do %>
+                        <i class="fas fa-angle-left"></i> edit
+                    <% end %>
+                <% end %>
+            </p>
+        </div>
+        
+        <% @album.images.each do |a| %>
+            <div class="col-md-3 album-image-container-parent">
+                <div class="card album-image-container">
+                    <div class="card-body" style="background-image: url('<%= url_for(a) %>');"
+                        onclick="">
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</section>

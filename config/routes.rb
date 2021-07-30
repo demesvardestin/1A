@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :comments, except: [:show, :index, :edit]
     resources :admins, only: [:create, :update]
     resources :series, only: [:create, :update, :destroy, :show]
+    resources :albums, only: [:create, :update, :destroy, :show, :edit]
     
     get '/a/:id', to: 'blog/articles#article_redirect_from_short_url'
     get '/preview_post', to: 'blog/articles#preview_post'
@@ -53,6 +54,9 @@ Rails.application.routes.draw do
     get '/new-series', to: 'series#new'
     get '/s/:slug', to: 'series#show', as: 'show_series'
     get '/s/:slug/edit', to: 'series#edit'
+    get '/new-album', to: 'albums#new'
+    get '/photography', to: 'albums#index'
+    get '/photography/:id/:slug', to: 'albums#show'
     
     root "pages#home"
 end

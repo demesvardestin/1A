@@ -1,0 +1,15 @@
+<section id="albums">
+    <div class="row" style="margin-bottom: 15px;">
+        <div class="col-md-12">
+            <h5>
+                <strong>
+                    collections
+                </strong>
+            </h5>
+        </div>
+    </div>
+    
+    <div class="row">
+        <%= render partial:"albums", locals: { albums: @albums } %>
+    </div>
+</section>

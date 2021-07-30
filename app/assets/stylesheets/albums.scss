@@ -1,0 +1,62 @@
+// Place all the styles related to the Album controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.album-image-container {
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    
+    .card-body {
+        height: 200px;
+        width: 100%;
+        border-radius: 5px;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.album-thumbnail-container, {
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    
+    .card-body {
+        height: 200px;
+        width: 100%;
+        border-radius: 5px;
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .card-footer {
+        display: none;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top: none;
+        transition: display 2s;
+    }
+}
+
+.album-image-container-parent {
+    margin-bottom: 15px;
+    padding-left: 0;
+    padding-right: 0;
+    
+    .album-image-container {
+        border-radius: 0 !important;
+    }
+}
+
+.album-thumbnail-container:hover {
+    box-shadow: 0 26px 54px -10px rgba(50,50,93,.25);
+    
+    .card-body {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    
+    .card-footer {
+        display: block;
+    }
+}

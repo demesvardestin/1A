@@ -252,6 +252,20 @@ a.btn {
 }
 
 @media only screen and (max-device-width: 992px) {
+    .album-thumbnail-container{
+        margin-bottom: 15px;
+        background-color: #e5f1ff;
+        
+        .card-body {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        
+        .card-footer {
+            display: block !important;
+        }
+    }
+    
     .related-posts-col {
         padding-top: 25px;
     }
