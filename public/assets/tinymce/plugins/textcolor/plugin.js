@@ -1,1 +1,10 @@
-plugin-e232a6f06e3de91a74c78d91e159209e2b8b0bebbbf098e7e114fca70ef42e63.js
+/**
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
+ *
+ * Version: 5.5.1 (2020-10-01)
+ */
+
+!function(){"use strict";tinymce.util.Tools.resolve("tinymce.PluginManager").add("textcolor",function(){console.warn("Text color plugin is now built in to the core editor, please remove it from your editor configuration")})}();

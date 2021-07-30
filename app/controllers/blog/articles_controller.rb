@@ -4,7 +4,7 @@ class Blog::ArticlesController < ApplicationController
     
     def index
         @articles = Article.published.not_associated_with_project
-                            .order("created_at DESC")
+                            .order("created_at DESC").paginate(per_page: 8, page: params[:page])
     end
     
     def article_redirect_from_short_url

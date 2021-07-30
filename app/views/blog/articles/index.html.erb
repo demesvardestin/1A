@@ -1,8 +1,8 @@
 <section id="articles-section">
     <div class="row">
-        <div class="col-md-3 offset-md-2">
+        <div class="col-md-2">
             <div class="dropdown">
-                <button class="btn btn-outline-primary btn-block" type="button"
+                <button class="btn btn-outline-primary btn-block btn-sm" type="button"
                     id="categoryMenuButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     categories <i class="fas fa-angle-down"></i>
@@ -20,13 +20,13 @@
     </div>
     
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-8">
             <hr>
         </div>
     </div>
     
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-8">
             <section id="articles">
                 <%= render partial: "blog/articles/articles", locals: { posts: @articles } %>
             </section>

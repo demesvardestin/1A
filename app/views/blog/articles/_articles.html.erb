@@ -1,12 +1,14 @@
 <% if posts.present? %>
-    <p style="margin-bottom: 0; color: green;">
-        <%= pluralize(posts.count, "post") %>
-    </p>
+    <!-- MAY USE THIS LATER -->
+    <!--<p style="margin-bottom: 0; color: green;">-->
+    <!--    <%= pluralize(posts.count, "post") %>-->
+    <!--</p>-->
+    
     <% posts.each do |poste| %>
-        <div style="margin-bottom: 20px;">
-            <h5 style="margin-bottom: 5px;">
+        <div style="margin-bottom: 10px;">
+            <h6>
                 <%= link_to poste.title, blog_show_article_path(:slug => poste.slug, :id => poste.id), class:"" %>
-            </h5>
+            </h6>
             
             <p style="margin-bottom: 0;">
                 <%= poste.description %>
@@ -20,6 +22,13 @@
             <% end %>
         </div>
     <% end %>
+    
+    <div class="digg_pagination" style="margin-top: 20px;">
+        <div class="page_info">
+            <%= page_entries_info @posts %>
+        </div>
+        <%= will_paginate posts, :container => false %>
+    </div>
 <% else %>
     <h6>no results found</h6>
 <% end %>
