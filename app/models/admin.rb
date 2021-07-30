@@ -6,6 +6,7 @@ class Admin < ApplicationRecord
   has_many :articles
   has_many :projects
   has_many :series
+  has_many :albums
   
   def full_name
     first_name << " " << last_name

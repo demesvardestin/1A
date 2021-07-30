@@ -13,17 +13,8 @@
                 </li>
                 <li class="nav-item">
                     <a class="dashboard-nav-link nav-link cursor-pointer"
-                        id="nav-link-projects" onclick="showContent(this)">
-                        <span style="float: left;">my projects</span>
-                        <span style="float: right;">
-                            <i class="fas fa-angle-right"></i>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="dashboard-nav-link nav-link cursor-pointer"
-                        id="nav-link-series" onclick="showContent(this)">
-                        <span style="float: left;">my series</span>
+                        id="nav-link-albums" onclick="showContent(this)">
+                        <span style="float: left;">my albums</span>
                         <span style="float: right;">
                             <i class="fas fa-angle-right"></i>
                         </span>
@@ -75,14 +66,9 @@
                     locals: { posts: current_admin.articles } %>
             </section>
             
-            <section id="projects-tab" class="content-tab">
-                <%= render partial: "/project/projects/projects",
-                    locals: { projects: current_admin.projects } %>
-            </section>
-            
-            <section id="series-tab" class="content-tab">
-                <%= render partial: "/series/series",
-                    locals: { series: current_admin.series } %>
+            <section id="albums-tab" class="content-tab">
+                <%= render partial: "/album/albums",
+                    locals: { albums: current_admin.albums } %>
             </section>
             
             <section id="profile-tab" class="content-tab">

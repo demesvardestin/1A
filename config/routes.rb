@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'album/show'
-
-  get 'album/index'
-
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     devise_for :admins, :controllers => { :registrations => "authentication/admins/registrations" }
     devise_scope :admin do
         get '/login', to: 'devise/sessions#new'
@@ -58,5 +54,5 @@ Rails.application.routes.draw do
     get '/s/:slug', to: 'series#show', as: 'show_series'
     get '/s/:slug/edit', to: 'series#edit'
     
-    root "blog/articles#index"
+    root "pages#home"
 end

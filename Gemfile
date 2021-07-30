@@ -24,6 +24,8 @@ gem 'tinymce-rails'
 gem 'devise'
 gem 'social-share-button'
 gem 'will_paginate', '~> 3.1.0'
+# Improves cache performance
+# gem 'bootsnap', require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

@@ -4,31 +4,37 @@
     <!--    <%= pluralize(posts.count, "post") %>-->
     <!--</p>-->
     
-    <% posts.each do |poste| %>
-        <div style="margin-bottom: 10px;">
-            <h6>
-                <%= link_to poste.title, blog_show_article_path(:slug => poste.slug, :id => poste.id), class:"" %>
-            </h6>
-            
-            <p style="margin-bottom: 0;">
-                <%= poste.description %>
-            </p>
-            
-            <% if current_admin && poste.admin == current_admin %>
-                [<%= link_to "edit", "/blog/article/#{poste.id}/edit", class:"btn btn-link",
-                    style: "color: #007bff !important;" %>] |
-                [<%= link_to "delete", blog_article_path(poste), class:"btn btn-link",
-                    method: :delete, data: { alert: "are you sure?" }, style: "color: #007bff !important;" %>]
-            <% end %>
+    <ul style="padding-inline-start: 15px;">
+        <% posts.each do |poste| %>
+            <li>
+                <div style="margin-bottom: 10px;">
+                    <h6 style="margin-bottom: 0;">
+                        <%= link_to poste.title, blog_show_article_path(:slug => poste.slug, :id => poste.id), class:"" %>
+                    </h6>
+                    
+                    <p style="margin-bottom: 0;">
+                        <%= poste.description %>
+                    </p>
+                    
+                    <% if current_admin && poste.admin == current_admin %>
+                        [<%= link_to "edit", "/blog/article/#{poste.id}/edit", class:"btn btn-link",
+                            style: "color: #007bff !important;" %>] |
+                        [<%= link_to "delete", blog_article_path(poste), class:"btn btn-link",
+                            method: :delete, data: { alert: "are you sure?" }, style: "color: #007bff !important;" %>]
+                    <% end %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+    
+    <% if greater_than(10, posts) %>
+        <div class="digg_pagination" style="margin-top: 20px;">
+            <div class="page_info">
+                <%= page_entries_info posts %>
+            </div>
+            <%= will_paginate posts, :container => false %>
         </div>
     <% end %>
-    
-    <div class="digg_pagination" style="margin-top: 20px;">
-        <div class="page_info">
-            <%= page_entries_info @posts %>
-        </div>
-        <%= will_paginate posts, :container => false %>
-    </div>
 <% else %>
     <h6>no results found</h6>
 <% end %>

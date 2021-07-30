@@ -40,4 +40,13 @@ module ApplicationHelper
             name
         end
     end
+    
+    ########
+    
+    def greater_than(limit, object)
+        size = object.size
+        return true if size > limit
+        
+        return false
+    end
 end
