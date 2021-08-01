@@ -1,0 +1,17 @@
+<%= form_for(@photo, :html => { :id => "photo-form" }) do |f| %>
+    <div class="field">
+        <%= f.text_field :location, class:"form-control", placeholder:"location" %>
+    </div>
+    
+    <div class="field">
+        <%= f.text_area :description, class:"form-control", placeholder:"description" %>
+    </div>
+    
+    <div class="field">
+        <%= f.text_field :tags, class:"form-control", placeholder:"tags" %>
+    </div>
+    
+    <div class="actions">
+        <%= f.submit "update", class:"btn btn-primary" %>
+    </div>
+<% end %>

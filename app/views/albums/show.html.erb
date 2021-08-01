@@ -18,23 +18,73 @@
         
         <div class="col-md-12" style="margin-bottom: 20px;">
             <p>
-                <%= link_to :back, class:"" do %>
+                <%= link_to photography_path, class:"" do %>
                     <i class="fas fa-angle-left"></i> back
                 <% end %>
                 
-                <% if current_admin && @album == current_admin.album %>
+                <% if current_admin && @album.admin == current_admin %>
                     | <%= link_to edit_album_path(@album), class:"" do %>
-                        <i class="fas fa-angle-left"></i> edit
+                        edit <i class="fas fa-angle-right"></i>
                     <% end %>
                 <% end %>
             </p>
         </div>
         
         <% @album.images.each do |a| %>
+            <div class="modal fade" id="staticBackdrop-<%= a.id %>"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <div class="modal-body" style="padding-top: 0; padding-bottom: 0; padding-left: 0;">
+                    <div class="row">
+                        <div class="col-md-7" id="modal-image-<%= a.id %>"
+                            style="height: 550px; padding: 0; background-size: cover; background-position: center;"></div>
+                        
+                        <div class="col-md-5" style="border-left: 1px solid #e7e7e9;">
+                            <div class="row">
+                                <div class="col-md-12"
+                                    style="border-bottom: 1px solid #e7e7e9;
+                                            padding-top: 15px; padding-bottom: 15px;">
+                                    <i class="fas fa-map-marker-alt" style="color: #25c87c;"></i> <%= photo_for(a).location %>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12"
+                                    style="padding-top: 15px; padding-bottom: 15px;">
+                                    <p>
+                                        <%= photo_for(a).description %>
+                                    </p>
+                                    
+                                    <p>
+                                        <% photo_for(a).tags.split(",").each do |t| %>
+                                            <span style="margin-right: 15px;">
+                                                <%= link_to "##{t}", "/photos/tagged/#{t}", class:"" %>
+                                            </span>
+                                        <% end %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             <div class="col-md-3 album-image-container-parent">
-                <div class="card album-image-container">
-                    <div class="card-body" style="background-image: url('<%= url_for(a) %>');"
-                        onclick="">
+                <div class="album-image-location">
+                    <p style="font-size: 14px; margin-bottom: 10px;">
+                        <i class="fas fa-map-marker-alt" style="color: #25c87c;"></i> Battery Park City
+                    </p>
+                </div>
+                
+                <div class="card album-image-container" data-toggle="modal" data-target="#staticBackdrop-<%= a.id %>"
+                    onclick="document.querySelector('#modal-image-<%= a.id %>').style.backgroundImage = `url('<%= url_for(a) %>')`;">
+                    <div class="card-body" style="background-image: url('<%= url_for(a) %>');"></div>
+                    
+                    <div class="card-footer">
+                        <%= photo_for(a).description %>
                     </div>
                 </div>
             </div>

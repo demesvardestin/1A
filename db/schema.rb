@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_30_171843) do
+ActiveRecord::Schema.define(version: 2021_08_01_025131) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_07_30_171843) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "admin_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -98,6 +99,22 @@ ActiveRecord::Schema.define(version: 2021_07_30_171843) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "commentable_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer "album_id"
+    t.integer "image_id"
+    t.text "description", default: "No description provided for this photo"
+    t.string "location", default: "Location not specified"
+    t.string "tags", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|

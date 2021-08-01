@@ -16,6 +16,10 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       if @album.save
         format.html { redirect_to @album, notice: "Album created!" }
+          
+        @album.images.each do |i|
+          Photo.find_or_create_by(album_id: i.record_id, image_id: i.id)
+        end
       else
         format.html { redirect_to :back, notice: "There was an error saving this album" }
       end
@@ -28,6 +32,10 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       if @album.save
         format.html { redirect_to "/photography/#{@album.id}/#{@album.slug}", notice: "Album updated!" }
+          
+        @album.images.each do |i|
+          Photo.find_or_create_by(album_id: i.record_id, image_id: i.id)
+        end
       else
         format.html { redirect_to :back, notice: "An error occurred" }
       end

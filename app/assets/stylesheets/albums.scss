@@ -2,21 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.album-image-container {
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    
-    .card-body {
-        height: 200px;
-        width: 100%;
-        border-radius: 5px;
-        background-size: cover;
-        background-position: center;
-    }
-}
 
-.album-thumbnail-container, {
+.album-thumbnail-container, .album-image-container {
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -30,33 +17,48 @@
     }
     
     .card-footer {
-        display: none;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         border-top: none;
-        transition: display 2s;
+        background-color: #e5f1ff;
+        display:  none;
     }
+}
+
+.album-thumbnail-container:hover, .album-image-container:hover {
+    box-shadow: 0 26px 54px -10px rgba(50,50,93,.25);
 }
 
 .album-image-container-parent {
-    margin-bottom: 15px;
-    padding-left: 0;
-    padding-right: 0;
-    
-    .album-image-container {
-        border-radius: 0 !important;
-    }
+    margin-bottom: 30px;
 }
 
-.album-thumbnail-container:hover {
-    box-shadow: 0 26px 54px -10px rgba(50,50,93,.25);
-    
-    .card-body {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+.album-image-location {
+    display: none;
+}
+
+@media only screen and (max-device-width: 992px) {
+    .album-image-location {
+        display: block !important;
+        padding-left: 15px;
+        padding-right: 15px;
     }
     
-    .card-footer {
-        display: block;
+    .album-thumbnail-container{
+        margin-bottom: 15px;
+        
+        .card-body, .card-footer {
+            border-radius: 0 !important;
+        }
+    }
+    
+    .album-image-container-parent {
+        padding-left: 0;
+        padding-right: 0;
+        
+        .album-image-container, .album-image-container .card-body, .album-image-container .card-footer {
+            border-radius: 0 !important;
+            display: block !important;
+        }
     }
 }

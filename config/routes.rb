@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :admins, only: [:create, :update]
     resources :series, only: [:create, :update, :destroy, :show]
     resources :albums, only: [:create, :update, :destroy, :show, :edit]
+    resources :photos, only: [:edit, :update]
     
     get '/a/:id', to: 'blog/articles#article_redirect_from_short_url'
     get '/preview_post', to: 'blog/articles#preview_post'
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
     get '/new-album', to: 'albums#new'
     get '/photography', to: 'albums#index'
     get '/photography/:id/:slug', to: 'albums#show'
+    get '/photos/tagged/:tag', to: 'photos#index'
     
     root "pages#home"
 end
