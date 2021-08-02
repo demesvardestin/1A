@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-    # before_action :authenticate_admin!
-    before_action :set_photo
+    before_action :authenticate_admin!, except: :index
+    before_action :set_photo, except: :index
     
     def edit
         @album = @photo.album
@@ -17,6 +17,10 @@ class PhotosController < ApplicationController
                 format.html { redirect_to :back, notice: "Failed to update photo" }
             end
         end
+    end
+    
+    def index
+        @photos = Photo.where("tags LIKE ?", "%#{params[:tag]}%")
     end
     
     private

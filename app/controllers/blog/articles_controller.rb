@@ -70,7 +70,7 @@ class Blog::ArticlesController < ApplicationController
     def destroy
         @article.delete
         
-        redirect_to :back, notice: "article deleted!"
+        redirect_to root_path, notice: "article deleted!"
     end
     
     def create
@@ -79,7 +79,7 @@ class Blog::ArticlesController < ApplicationController
         @article.project_id = params[:project_id] if params[:project_id]
         @article.save!
         
-        redirect_to blog_article_path(@article), notice: "Article saved!"
+        redirect_to blog_show_article_path(:slug => @article.slug, :id => @article.id), notice: "Article saved!"
     end
     
     def filter_by_category

@@ -40,8 +40,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="/blog/create">article</a>
-                            <a class="dropdown-item" href="/project/new">project</a>
-                            <a class="dropdown-item" href="/new-series">series</a>
+                            <a class="dropdown-item" href="/new-album">album</a>
                         </div>
                     </div>
                 </li>
@@ -67,7 +66,7 @@
             </section>
             
             <section id="albums-tab" class="content-tab">
-                <%= render partial: "/album/albums",
+                <%= render partial: "/albums/albums",
                     locals: { albums: current_admin.albums } %>
             </section>
             

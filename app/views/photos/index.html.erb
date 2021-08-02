@@ -1,0 +1,103 @@
+<section id="photos-by-tag">
+    <div class="row">
+        <div class="col-md-12">
+            <h6>
+                <strong>
+                    <%= params[:tag] %>
+                </strong>
+            </h6>
+        </div>
+        
+        <div class="col-md-12" style="margin-bottom: 20px;">
+            <p>
+                <%= link_to :back, class:"" do %>
+                    <i class="fas fa-angle-left"></i> back
+                <% end %>
+            </p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <% @photos.each do |ph| %>
+            <div class="modal fade image-modal" id="staticBackdrop-<%= image_for(ph).id %>"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <div class="modal-body" style="padding-top: 0; padding-bottom: 0; padding-left: 0;">
+                    <div class="row">
+                        <div class="col-md-7" id="modal-image-<%= image_for(ph).id %>"
+                            style="height: 550px; padding: 0; background-size: cover; background-position: center;"></div>
+                        
+                        <div class="col-md-5" style="border-left: 1px solid #e7e7e9;">
+                            <div class="row">
+                                <div class="col-md-12"
+                                    style="border-bottom: 1px solid #e7e7e9;
+                                            padding-top: 15px; padding-bottom: 15px;">
+                                    <i class="fas fa-map-marker-alt" style="color: #25c87c;"></i> <%= ph.location %>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12"
+                                    style="padding-top: 15px; padding-bottom: 15px;">
+                                    <p>
+                                        <%= ph.description %>
+                                    </p>
+                                    
+                                    <p>
+                                        <% ph.tags.split(",").each do |t| %>
+                                            <span style="margin-right: 15px;">
+                                                <%= link_to "##{t}", "/photos/tagged/#{t}", class:"" %>
+                                            </span>
+                                        <% end %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-3 album-image-container-parent">
+                <div class="album-image-location">
+                    <p style="font-size: 14px; margin-bottom: 10px;">
+                        <i class="fas fa-map-marker-alt" style="color: #25c87c;"></i> <%= ph.location %>
+                    </p>
+                </div>
+                
+                <div class="card album-image-container">
+                    <div class="card-body" style="background-image: url('<%= url_for(image_for(ph)) %>');"
+                        data-toggle="modal" data-target="#staticBackdrop-<%= image_for(ph).id %>"
+                        onclick="document.querySelector('#modal-image-<%= image_for(ph).id %>').style.backgroundImage = `url('<%= url_for(image_for(ph)) %>')`;"></div>
+                    
+                    <div class="card-footer">
+                        <div id="truncated-text-<%= image_for(ph).id %>">
+                            <%= ph.description.truncate(100, :separator => ' ') %>
+                            <% if ph.description.length > 100 %>
+                                <a onclick="$('#truncated-text-<%= image_for(ph).id %>').hide(); document.querySelector('#untruncated-text-<%= image_for(ph).id %>').style.display='block';">
+                                    more
+                                </a>
+                            <% end %>
+                        </div>
+                        
+                        <div style="display: none;" id="untruncated-text-<%= image_for(ph).id %>">
+                            <p>
+                                <%= ph.description %>
+                            </p>
+                            
+                            <p>
+                                <% ph.tags.split(",").each do |t| %>
+                                    <span style="margin-right: 15px;">
+                                        <%= link_to "##{t}", "/photos/tagged/#{t}", class:"" %>
+                                    </span>
+                                <% end %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</section>

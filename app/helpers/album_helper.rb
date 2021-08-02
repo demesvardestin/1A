@@ -5,4 +5,11 @@ module AlbumHelper
         
         return Photo.new(description: "No description available for this photo", location:"Location not specified")
     end
+    
+    def image_for(ph)
+        album = Album.find_by(id: ph.album_id)
+        photo = album.images.find_by(id: ph.image_id)
+        
+        return photo
+    end
 end

@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update]
-  # before_action :authenticate_admin!, except: :show
+  before_action :authenticate_admin!, except: [:show, :index]
   
   def index
     @albums = Album.all

@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
-    @comment.commentable = Commentable.find(params[:comment][:commentable_id])
     @comment.save!
     
-    redirect_to :back, notice: "thanks for participating in the conversation!"
+    commentable = Commentable.find(params[:comment][:commentable_id])
+    @commentable = commentable.object_type.constantize.find(commentable.object_id)
+    
+    redirect_to blog_show_article_path(:slug => @commentable.slug, :id => @commentable.id), notice: "thanks for participating in the conversation!"
   end
   
   private

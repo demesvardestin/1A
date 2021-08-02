@@ -1,21 +1,31 @@
-<% albums.each do |a| %>
-    <div class="col-md-3">
-        <div class="card album-thumbnail-container">
-            <div class="card-body" style="background-image: url('<%= url_for(a.images.last) %>');"
-                onclick="window.location.href='/photography/<%= a.id %>/<%= a.slug %>'">
-            </div>
-            
-            <div class="card-footer">
-                <h6>
-                    <strong>
-                        <%= a.name %>
-                    </strong>
-                </h6>
+<% if albums.present? %>
+    <% albums.each do |a| %>
+        <div class="col-md-3">
+            <div class="card album-thumbnail-container">
+                <div class="card-body" style="background-image: url('<%= url_for(a.images.last) %>');"
+                    onclick="window.location.href='/photography/<%= a.id %>/<%= a.slug %>'">
+                </div>
                 
-                <p style="margin-bottom: 0; font-size: 14px;">
-                    <%= a.description %>
-                </p>
+                <div class="card-footer">
+                    <h6>
+                        <strong>
+                            <%= a.name %>
+                        </strong>
+                    </h6>
+                    
+                    <p style="margin-bottom: 0; font-size: 14px;">
+                        <%= a.description %>
+                    </p>
+                </div>
             </div>
         </div>
+    <% end %>
+<% else %>
+    <div class="col-md-3">
+        <h6>
+            <strong>
+                No collections yet
+            </strong>
+        </h6>
     </div>
 <% end %>
