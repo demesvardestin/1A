@@ -44,7 +44,7 @@ class Article < ApplicationRecord
     end
     
     def commentable
-        Commentable.find_by(object_id: id, object_type: self.class.name)
+        Commentable.find_by(object_id: self.id, object_type: self.class.name)
     end
     
     def comments
