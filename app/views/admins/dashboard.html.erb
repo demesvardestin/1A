@@ -62,12 +62,12 @@
         <div class="col-md-9">
             <section id="articles-tab" class="content-tab active">
                 <%= render partial: "/blog/articles/articles",
-                    locals: { posts: current_admin.articles } %>
+                    locals: { posts: @articles } %>
             </section>
             
             <section id="albums-tab" class="content-tab">
                 <%= render partial: "/albums/albums",
-                    locals: { albums: current_admin.albums } %>
+                    locals: { albums: @albums } %>
             </section>
             
             <section id="profile-tab" class="content-tab">

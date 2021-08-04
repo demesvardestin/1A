@@ -8,6 +8,11 @@ class AdminsController < ApplicationController
     redirect_to :back, notice: "profile info saved!"
   end
   
+  def dashboard
+    @articles = current_admin.articles.paginate(:per_page => 10, :page => params[:page])
+    @albums = current_admin.albums.paginate(:per_page => 10, :page => params[:page])
+  end
+  
   private
   
   def set_admin
