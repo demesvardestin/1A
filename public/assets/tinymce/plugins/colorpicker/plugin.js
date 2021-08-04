@@ -1,10 +1,1 @@
-/**
- * Copyright (c) Tiny Technologies, Inc. All rights reserved.
- * Licensed under the LGPL or a commercial license.
- * For LGPL see License.txt in the project root for license information.
- * For commercial licenses see https://www.tiny.cloud/
- *
- * Version: 5.5.1 (2020-10-01)
- */
-
-!function(){"use strict";tinymce.util.Tools.resolve("tinymce.PluginManager").add("colorpicker",function(){console.warn("Color picker plugin is now built in to the core editor, please remove it from your editor configuration")})}();
+plugin-6c12ab34f82f3c6f06d407cc102e682eb97e3769be985adc5c1d092f66c93aaf.js
